@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import rest_framework.authentication
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -48,6 +47,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'project',
     'django_filters',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
@@ -143,5 +143,11 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'],
     'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication',
                                        'rest_framework.authentication.SessionAuthentication',
-                                       'rest_framework.authentication.BasicAuthentication']
+                                       'rest_framework.authentication.BasicAuthentication'],
+
+    'DEFAULT_VERSIONING_CLASS':
+    # 'rest_framework.versioning.URLPathVersioning', # http://127.0.0.1:8000/api/0.2/users/
+    # 'rest_framework.versioning.NamespaceVersioning', # http://127.0.0.1:8000/api/users/0.2
+        'rest_framework.versioning.QueryParameterVersioning',  # http://127.0.0.1:8000/api/users/?version=0.2
+    #     'rest_framework.versioning.AcceptHeaderVersioning',
 }
