@@ -143,5 +143,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'],
     'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication',
                                        'rest_framework.authentication.SessionAuthentication',
-                                       'rest_framework.authentication.BasicAuthentication']
+                                       'rest_framework.authentication.BasicAuthentication'],
+
+    'DEFAULT_VERSIONING_CLASS':
+    'rest_framework.versioning.URLPathVersioning', # http://127.0.0.1:8000/api/0.2/users/
+
 }

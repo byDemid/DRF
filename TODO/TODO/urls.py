@@ -30,4 +30,6 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls)),
     path('api-auth-token/', views.obtain_auth_token),
+
+    path('api/<str:version>/users/', UserModelViewSet.as_view({'get': 'list'})),
 ]
