@@ -32,4 +32,6 @@ urlpatterns = [
     path('api-auth-token/', views.obtain_auth_token),
 
     path('api/<str:version>/users/', UserModelViewSet.as_view({'get': 'list'})),
+    path('api/users/0.1', include('users.urls', namespace='0.1')),
+    path('api/users/0.2', include('users.urls', namespace='0.2')),
 ]

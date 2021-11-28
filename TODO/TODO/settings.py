@@ -146,6 +146,7 @@ REST_FRAMEWORK = {
                                        'rest_framework.authentication.BasicAuthentication'],
 
     'DEFAULT_VERSIONING_CLASS':
-    'rest_framework.versioning.URLPathVersioning', # http://127.0.0.1:8000/api/0.2/users/
+    # 'rest_framework.versioning.URLPathVersioning', # http://127.0.0.1:8000/api/0.2/users/
+    'rest_framework.versioning.NamespaceVersioning', # http://127.0.0.1:8000/api/users/0.2
 
 }
