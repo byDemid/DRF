@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'project',
     'django_filters',
-    'drf_yasg'
+    'drf_yasg',
+    'graphene_django'
 ]
 
 MIDDLEWARE = [
@@ -151,3 +152,8 @@ REST_FRAMEWORK = {
         'rest_framework.versioning.QueryParameterVersioning',  # http://127.0.0.1:8000/api/users/?version=0.2
     #     'rest_framework.versioning.AcceptHeaderVersioning',
 }
+
+GRAPHENE = {
+    'SCHEMA': 'TODO.schema.schema'
+}
+
