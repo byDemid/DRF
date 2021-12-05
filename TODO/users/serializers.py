@@ -11,4 +11,4 @@ class UserModelSerializer(HyperlinkedModelSerializer):
 class UserModelSerializerOnlyUsername(ModelSerializer):
     class Meta:
         model = TodoUser
-        fields = ['username', ]
+        fields = ['username', 'first_name', 'last_name', 'email', 'is_superuser', 'is_staff']
