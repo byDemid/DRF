@@ -20,6 +20,7 @@ from rest_framework.routers import DefaultRouter
 from project.views import ProjectModelViewSet, ToDoModelViewSet
 from users.views import UserModelViewSet
 from rest_framework.authtoken import views
+from django.views.generic import TemplateView
 
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
@@ -48,13 +49,15 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api-auth-token/', views.obtain_auth_token),
 
-    path('api/<str:version>/users/', UserModelViewSet.as_view({'get': 'list'})),
-    path('api/users/0.1', include('users.urls', namespace='0.1')),
-    path('api/users/0.2', include('users.urls', namespace='0.2')),
-
-    path('swagger<str:format>/', schema_view.without_ui()),
-    path('swagger/', schema_view.with_ui('swagger')),
-    path('redoc/', schema_view.with_ui('redoc')),
+    # path('api/<str:version>/users/', UserModelViewSet.as_view({'get': 'list'})),
+    # path('api/users/0.1', include('users.urls', namespace='0.1')),
+    # path('api/users/0.2', include('users.urls', namespace='0.2')),
+    #
+    # path('swagger<str:format>/', schema_view.without_ui()),
+    # path('swagger/', schema_view.with_ui('swagger')),
+    # path('redoc/', schema_view.with_ui('redoc')),
 
     path('graphql/', GraphQLView.as_view(graphiql=True)),
+
+    path('', TemplateView.as_view(template_name='index.html')),
 ]

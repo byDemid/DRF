@@ -67,8 +67,8 @@ ROOT_URLCONF = 'TODO.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'frontend/build/'],
+        # 'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,6 +129,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (BASE_DIR / 'frontend/build/static',)
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -147,13 +149,12 @@ REST_FRAMEWORK = {
                                        'rest_framework.authentication.BasicAuthentication'],
 
     'DEFAULT_VERSIONING_CLASS':
-    # 'rest_framework.versioning.URLPathVersioning', # http://127.0.0.1:8000/api/0.2/users/
+        'rest_framework.versioning.URLPathVersioning',  # http://127.0.0.1:8000/api/0.2/users/
     # 'rest_framework.versioning.NamespaceVersioning', # http://127.0.0.1:8000/api/users/0.2
-        'rest_framework.versioning.QueryParameterVersioning',  # http://127.0.0.1:8000/api/users/?version=0.2
+    #     'rest_framework.versioning.QueryParameterVersioning',  # http://127.0.0.1:8000/api/users/?version=0.2
     #     'rest_framework.versioning.AcceptHeaderVersioning',
 }
 
 GRAPHENE = {
     'SCHEMA': 'TODO.schema.schema'
 }
-
